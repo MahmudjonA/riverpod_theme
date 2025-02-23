@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:riverpod_testing/features/profile_page/profile_page.dart';
-
+import 'package:riverpod_testing/features/provider/theme_provider_controller.dart';
 import '../provider/riverpod.dart';
 
 class HomePage extends ConsumerWidget {
@@ -18,28 +17,15 @@ class HomePage extends ConsumerWidget {
           Switch(
             value: themeMode == ThemeMode.dark,
             onChanged: (value) {
-              ref.read(themeProvider.notifier).toggleTheme();
+              toggleTheme(ref);
             },
           ),
         ],
       ),
       body: Center(
-        child: Column(
-          children: [
-            TextButton(
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => ProfilePage()),
-                );
-              },
-              child: Text('Profile Page'),
-            ),
-            Text(
-              'Current theme: ${themeMode == ThemeMode.dark ? "Dark" : "Light"}',
-              style: TextStyle(fontSize: 20),
-            ),
-          ],
+        child: Text(
+          'Current theme: ${themeMode == ThemeMode.dark ? "Dark" : "Light"}',
+          style: TextStyle(fontSize: 20),
         ),
       ),
     );

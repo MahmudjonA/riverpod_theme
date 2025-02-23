@@ -15,7 +15,7 @@ class MyApp extends ConsumerWidget {
       title: 'Flutter Demo',
       theme: ThemeData.light(),
       darkTheme: ThemeData.dark(),
-      themeMode: themeMode.themeMode,
+      themeMode: themeMode,
       home: HomePage(),
     );
   }

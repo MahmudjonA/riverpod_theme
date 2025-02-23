@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:riverpod_testing/features/provider/riverpod.dart';
 
-class ThemeNotifier extends ChangeNotifier {
-  ThemeMode themeMode = ThemeMode.light;
-
-  void toggleTheme() {
-    themeMode =
-        themeMode == ThemeMode.light ? ThemeMode.dark : ThemeMode.light;
-    notifyListeners();
-  }
+void toggleTheme(WidgetRef ref) {
+  final isDarkMode = ref.read(themeProvider) == ThemeMode.dark;
+  ref.read(themeProvider.notifier).state =
+      isDarkMode ? ThemeMode.light : ThemeMode.dark;
 }
